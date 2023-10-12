@@ -50,13 +50,11 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        $employee = Employee::find($id);
-        return $employee->qualifications;
-        // qualifications
-        // if($employee){
-        //     return $this->apiResponse(new EmployeesResource($employee),'ok',200);
-        // }
-        // return $this->apiResponse(null,'This Employee Not Found',400);
+        $employee = Employee::with(['qualifications'])->find($id);
+        if($employee){
+            return $this->apiResponse(new EmployeesResource($employee->qualifications),'ok',200);
+        }
+        return $this->apiResponse(null,'This Employee Not Found',400);
     }
 
     /**
