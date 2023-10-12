@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EmployeesResource;
 use App\Models\Employee;
+// use App\Models\Qualifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,9 +18,9 @@ class EmployeeController extends Controller
     use ApiResponseTrait;
     public function index()
     {
-        //
-        $employees = EmployeesResource::collection(Employee::get());
-        return $this->apiResponse($employees,'ok',200);
+       return $employees = Employee::with(['qualifications'])->get();
+
+        // return $this->apiResponse($employees,'ok',200);
     }
 
     /**
@@ -50,10 +51,12 @@ class EmployeeController extends Controller
     public function show($id)
     {
         $employee = Employee::find($id);
-        if($employee){
-            return $this->apiResponse(new EmployeesResource($employee),'ok',200);
-        }
-        return $this->apiResponse(null,'This Employee Not Found',400);
+        return $employee->qualifications;
+        // qualifications
+        // if($employee){
+        //     return $this->apiResponse(new EmployeesResource($employee),'ok',200);
+        // }
+        // return $this->apiResponse(null,'This Employee Not Found',400);
     }
 
     /**

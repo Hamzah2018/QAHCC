@@ -14,4 +14,9 @@ class Employee extends Model
         'LASTNAME',
         'EDLEVEL',
     ];
+
+    public function qualifications()
+    {
+        return $this->hasMany(Qualifications::class,'EMPNO');
+    }
 }
