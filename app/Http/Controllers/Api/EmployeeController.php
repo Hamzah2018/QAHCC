@@ -18,9 +18,8 @@ class EmployeeController extends Controller
     use ApiResponseTrait;
     public function index()
     {
-       return $employees = Employee::with(['qualifications'])->get();
-
-        // return $this->apiResponse($employees,'ok',200);
+        $employees = EmployeesResource::collection(Employee::with(['qualifications'])->get());
+        return $this->apiResponse($employees,'ok',200);
     }
 
     /**

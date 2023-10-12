@@ -10,7 +10,7 @@ class Qualifications extends Model
     use HasFactory;
     protected $fillable = [
         'QUAL_NAME',
-        'MEMPNO',
+        'EMPNO',
         'YEAR_COMPLETED',
         'DESCRIPTION',
         'CERTIFICATE_NUMBER',

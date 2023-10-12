@@ -14,7 +14,7 @@ class EmployeesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        // return parent::toArray($request);
+            // return parent::toArray($request);
         return [
             'Employee No' => $this->id,
             "First NAME"=> $this->FIRSTNME,
@@ -30,16 +30,7 @@ class EmployeesResource extends JsonResource
             "SALARY"=> $this->SALARY,
             "BONUS"=> $this->BONUS,
             "COMM"=> $this->COMM,
-            "Employee No"=> $this->EMPNO,
-            // "Qualifiaction" => $this->qualifications[1] -> YEAR_COMPLETED,
-            "Qualifiaction Name" => $this->qualifications[1] -> QUAL_NAME,
-            // "Qualifiaction" => [
-            //     new EmployeesResource($this->qualifications->YEAR_COMPLETED)
-            // ],
-            "YEAR COMPLETED"=> $this->qualifications[1] ->YEAR_COMPLETED,
-            "Description "=> $this->qualifications[1] -> DESCRIPTION,
-            "Certificate Number"=> $this->qualifications[1]->CERTIFICATE_NUMBER ,
-            "AWARDING BODY"=> $this->qualifications[1]->AWARDING_BODY,
+            'Qualifiactions' => $this->qualifications
         ];
     }
 
